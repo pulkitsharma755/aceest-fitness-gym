@@ -25,8 +25,9 @@ pipeline {
         VENV = 'venv'
         IMAGE_NAME = 'aceest-fitness'
         // If Jenkins cannot find Python, replace with the full path, e.g.
-        // PYTHON = 'C:\\Users\\Pulkit\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'
-        PYTHON = 'python'
+        //PYTHON = 'C:\\Users\\Pulkit\\AppData\\Local\\Programs\\Python\\Python312
+python.exe'
+        PYTHON = 'C:\Users\Pulkit\AppData\Local\Programs\Python\Python314\python.exe'
     }
 
     triggers {
