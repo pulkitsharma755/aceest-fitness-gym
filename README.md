@@ -5,7 +5,7 @@ through an automated pipeline: Git for version control, Pytest for validation,
 Docker for environment consistency, Jenkins for the controlled BUILD, and GitHub
 Actions for continuous integration on every push and pull request.
 
-![CI/CD Pipeline](https://github.com/YOUR-USERNAME/aceest-fitness-gym/actions/workflows/main.yml/badge.svg)
+![CI/CD Pipeline](https://github.com/pulkitsharma755/aceest-fitness-gym/actions/workflows/main.yml/badge.svg)
 
 ---
 
@@ -144,7 +144,7 @@ keeps every SQL statement out of the route handlers.
 **Prerequisites:** Python 3.12+, Git, and Docker Desktop for the container steps.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/aceest-fitness-gym.git
+git clone https://github.com/pulkitsharma755/aceest-fitness-gym.git
 cd aceest-fitness-gym
 
 python -m venv .venv
@@ -324,7 +324,7 @@ Commit messages use conventional prefixes — `feat:`, `test:`, `ci:`, `docs:`,
 | Port 5000 already in use | `docker run -p 5001:5000 ...`, or stop the other process |
 | `docker: permission denied` | Start Docker Desktop; on Linux add your user to the `docker` group |
 | `database is locked` | Another process holds the SQLite file; stop it, or point `ACEEST_DB` elsewhere |
-| GitHub Actions badge shows "no status" | Replace `YOUR-USERNAME` in the badge URL |
+| GitHub Actions badge shows "no status" | Replace `pulkitsharma755` in the badge URL |
 
 ---
 
