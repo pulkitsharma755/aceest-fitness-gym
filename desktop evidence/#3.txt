@@ -1,0 +1,315 @@
+Started by user pulkit sharma
+Obtained Jenkinsfile from git https://github.com/pulkitsharma755/aceest-fitness-gym.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/pulkitsharma755/aceest-fitness-gym.git # timeout=10
+Fetching upstream changes from https://github.com/pulkitsharma755/aceest-fitness-gym.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.56.0.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/pulkitsharma755/aceest-fitness-gym.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision a6684a4161cc73e8c35294470fb2a84dea44c16b (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f a6684a4161cc73e8c35294470fb2a84dea44c16b # timeout=10
+Commit message: "fix: correct the Python path and remove the malformed comment in the Jenkins environment block"
+ > git.exe rev-list --no-walk 36b547c82c1865bb1743d59c9bf6c3919a872f11 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2026-10-02T08:29:40.418Z] Timeout set to expire in 20 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] echo
+[2026-10-02T08:29:40.525Z] Pulling the latest code from GitHub...
+[Pipeline] checkout
+[2026-10-02T08:29:40.540Z] Selected Git installation does not exist. Using Default
+[2026-10-02T08:29:40.540Z] The recommended git tool is: NONE
+[2026-10-02T08:29:40.540Z] No credentials specified
+[2026-10-02T08:29:40.540Z]  > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\.git # timeout=10
+[2026-10-02T08:29:40.604Z] Fetching changes from the remote Git repository
+[2026-10-02T08:29:40.604Z]  > git.exe config remote.origin.url https://github.com/pulkitsharma755/aceest-fitness-gym.git # timeout=10
+[2026-10-02T08:29:40.671Z] Fetching upstream changes from https://github.com/pulkitsharma755/aceest-fitness-gym.git
+[2026-10-02T08:29:40.671Z]  > git.exe --version # timeout=10
+[2026-10-02T08:29:40.719Z]  > git --version # 'git version 2.56.0.windows.1'
+[2026-10-02T08:29:40.719Z]  > git.exe fetch --tags --force --progress -- https://github.com/pulkitsharma755/aceest-fitness-gym.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-10-02T08:29:41.635Z]  > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+[2026-10-02T08:29:41.685Z] Checking out Revision a6684a4161cc73e8c35294470fb2a84dea44c16b (refs/remotes/origin/main)
+[2026-10-02T08:29:41.685Z]  > git.exe config core.sparsecheckout # timeout=10
+[2026-10-02T08:29:41.751Z]  > git.exe checkout -f a6684a4161cc73e8c35294470fb2a84dea44c16b # timeout=10
+[2026-10-02T08:29:41.818Z] Commit message: "fix: correct the Python path and remove the malformed comment in the Jenkins environment block"
+[Pipeline] bat
+[2026-10-02T08:29:42.133Z] 
+[2026-10-02T08:29:42.133Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>git rev-parse --short HEAD 
+[2026-10-02T08:29:42.133Z] a6684a4
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clean Build Environment)
+[Pipeline] echo
+[2026-10-02T08:29:42.268Z] Creating a fresh virtual environment...
+[Pipeline] bat
+[2026-10-02T08:29:42.550Z] 
+[2026-10-02T08:29:42.550Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>if exist venv rmdir /s /q venv 
+[2026-10-02T08:29:42.550Z] 
+[2026-10-02T08:29:42.550Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>C:\Users\Pulkit\AppData\Local\Programs\Python\Python314\python.exe -m venv venv 
+[2026-10-02T08:29:50.658Z] 
+[2026-10-02T08:29:50.658Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>call venv\Scripts\activate.bat 
+[2026-10-02T08:29:50.658Z] Requirement already satisfied: pip in .\venv\Lib\site-packages (26.2.1)
+[2026-10-02T08:29:51.591Z] Collecting Flask==3.0.3 (from -r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:51.842Z]   Downloading flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
+[2026-10-02T08:29:51.842Z] Collecting gunicorn==22.0.0 (from -r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 2))
+[2026-10-02T08:29:51.842Z]   Downloading gunicorn-22.0.0-py3-none-any.whl.metadata (4.4 kB)
+[2026-10-02T08:29:51.842Z] Collecting pytest==8.3.2 (from -r requirements-dev.txt (line 2))
+[2026-10-02T08:29:51.842Z]   Downloading pytest-8.3.2-py3-none-any.whl.metadata (7.5 kB)
+[2026-10-02T08:29:51.842Z] Collecting pytest-cov==5.0.0 (from -r requirements-dev.txt (line 3))
+[2026-10-02T08:29:51.842Z]   Downloading pytest_cov-5.0.0-py3-none-any.whl.metadata (27 kB)
+[2026-10-02T08:29:52.107Z] Collecting flake8==7.1.1 (from -r requirements-dev.txt (line 4))
+[2026-10-02T08:29:52.107Z]   Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+[2026-10-02T08:29:52.107Z] Collecting Werkzeug>=3.0.0 (from Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:52.107Z]   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+[2026-10-02T08:29:52.107Z] Collecting Jinja2>=3.1.2 (from Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:52.107Z]   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+[2026-10-02T08:29:52.358Z] Collecting itsdangerous>=2.1.2 (from Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:52.358Z]   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+[2026-10-02T08:29:52.358Z] Collecting click>=8.1.3 (from Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:52.358Z]   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+[2026-10-02T08:29:52.358Z] Collecting blinker>=1.6.2 (from Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:52.358Z]   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+[2026-10-02T08:29:52.358Z] Collecting packaging (from gunicorn==22.0.0->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 2))
+[2026-10-02T08:29:52.623Z]   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+[2026-10-02T08:29:52.623Z] Collecting iniconfig (from pytest==8.3.2->-r requirements-dev.txt (line 2))
+[2026-10-02T08:29:52.623Z]   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+[2026-10-02T08:29:52.623Z] Collecting pluggy<2,>=1.5 (from pytest==8.3.2->-r requirements-dev.txt (line 2))
+[2026-10-02T08:29:52.623Z]   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+[2026-10-02T08:29:52.623Z] Collecting colorama (from pytest==8.3.2->-r requirements-dev.txt (line 2))
+[2026-10-02T08:29:52.623Z]   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+[2026-10-02T08:29:53.555Z] Collecting coverage>=5.2.1 (from coverage[toml]>=5.2.1->pytest-cov==5.0.0->-r requirements-dev.txt (line 3))
+[2026-10-02T08:29:53.555Z]   Downloading coverage-7.16.2-cp314-cp314-win_amd64.whl.metadata (8.4 kB)
+[2026-10-02T08:29:53.555Z] Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.1.1->-r requirements-dev.txt (line 4))
+[2026-10-02T08:29:53.555Z]   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+[2026-10-02T08:29:53.555Z] Collecting pycodestyle<2.13.0,>=2.12.0 (from flake8==7.1.1->-r requirements-dev.txt (line 4))
+[2026-10-02T08:29:53.555Z]   Downloading pycodestyle-2.12.1-py2.py3-none-any.whl.metadata (4.5 kB)
+[2026-10-02T08:29:53.555Z] Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.1.1->-r requirements-dev.txt (line 4))
+[2026-10-02T08:29:53.555Z]   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
+[2026-10-02T08:29:53.808Z] Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->Flask==3.0.3->-r C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\requirements.txt (line 1))
+[2026-10-02T08:29:53.808Z]   Downloading markupsafe-3.0.3-cp314-cp314-win_amd64.whl.metadata (2.8 kB)
+[2026-10-02T08:29:53.808Z] Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+[2026-10-02T08:29:53.808Z] Downloading gunicorn-22.0.0-py3-none-any.whl (84 kB)
+[2026-10-02T08:29:53.808Z] Downloading pytest-8.3.2-py3-none-any.whl (341 kB)
+[2026-10-02T08:29:54.073Z] Downloading pytest_cov-5.0.0-py3-none-any.whl (21 kB)
+[2026-10-02T08:29:54.073Z] Downloading flake8-7.1.1-py2.py3-none-any.whl (57 kB)
+[2026-10-02T08:29:54.073Z] Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+[2026-10-02T08:29:54.073Z] Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+[2026-10-02T08:29:54.073Z] Downloading pycodestyle-2.12.1-py2.py3-none-any.whl (31 kB)
+[2026-10-02T08:29:54.073Z] Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+[2026-10-02T08:29:54.073Z] Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+[2026-10-02T08:29:54.073Z] Downloading click-8.5.0-py3-none-any.whl (125 kB)
+[2026-10-02T08:29:54.073Z] Downloading coverage-7.16.2-cp314-cp314-win_amd64.whl (226 kB)
+[2026-10-02T08:29:54.340Z] Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+[2026-10-02T08:29:54.340Z] Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+[2026-10-02T08:29:54.340Z] Downloading markupsafe-3.0.3-cp314-cp314-win_amd64.whl (15 kB)
+[2026-10-02T08:29:54.340Z] Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+[2026-10-02T08:29:54.604Z] Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+[2026-10-02T08:29:54.604Z] Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+[2026-10-02T08:29:54.604Z] Downloading packaging-26.3-py3-none-any.whl (129 kB)
+[2026-10-02T08:29:54.856Z] Installing collected packages: pyflakes, pycodestyle, pluggy, packaging, mccabe, MarkupSafe, itsdangerous, iniconfig, coverage, colorama, click, blinker, Werkzeug, pytest, Jinja2, gunicorn, flake8, pytest-cov, Flask
+[2026-10-02T08:30:00.133Z] 
+[2026-10-02T08:30:00.134Z] Successfully installed Flask-3.0.3 Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.9 blinker-1.9.0 click-8.5.0 colorama-0.4.6 coverage-7.16.2 flake8-7.1.1 gunicorn-22.0.0 iniconfig-2.3.0 itsdangerous-2.2.0 mccabe-0.7.0 packaging-26.3 pluggy-1.6.0 pycodestyle-2.12.1 pyflakes-3.2.0 pytest-8.3.2 pytest-cov-5.0.0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] echo
+[2026-10-02T08:30:00.517Z] Checking for syntax errors and style violations...
+[Pipeline] bat
+[2026-10-02T08:30:00.815Z] 
+[2026-10-02T08:30:00.815Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>call venv\Scripts\activate.bat 
+[2026-10-02T08:30:02.196Z] 0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Check)
+[Pipeline] echo
+[2026-10-02T08:30:02.331Z] Confirming the application builds and imports...
+[Pipeline] bat
+[2026-10-02T08:30:02.613Z] 
+[2026-10-02T08:30:02.613Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>call venv\Scripts\activate.bat 
+[2026-10-02T08:30:02.879Z] Application build OK
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Tests)
+[Pipeline] echo
+[2026-10-02T08:30:03.247Z] Running the Pytest suite...
+[Pipeline] bat
+[2026-10-02T08:30:03.528Z] 
+[2026-10-02T08:30:03.528Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>call venv\Scripts\activate.bat 
+[2026-10-02T08:30:04.461Z] ============================= test session starts =============================
+[2026-10-02T08:30:04.461Z] platform win32 -- Python 3.14.8, pytest-8.3.2, pluggy-1.6.0 -- C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\venv\Scripts\python.exe
+[2026-10-02T08:30:04.461Z] cachedir: .pytest_cache
+[2026-10-02T08:30:04.461Z] rootdir: C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build
+[2026-10-02T08:30:04.461Z] configfile: setup.cfg
+[2026-10-02T08:30:04.461Z] testpaths: tests
+[2026-10-02T08:30:04.461Z] plugins: cov-5.0.0
+[2026-10-02T08:30:04.461Z] collecting ... collected 97 items
+[2026-10-02T08:30:04.461Z] 
+[2026-10-02T08:30:04.461Z] tests/test_clients_api.py::test_index_describes_the_service PASSED       [  1%]
+[2026-10-02T08:30:04.461Z] tests/test_clients_api.py::test_health_reports_healthy PASSED            [  2%]
+[2026-10-02T08:30:04.461Z] tests/test_clients_api.py::test_programs_endpoint_returns_the_catalogue PASSED [  3%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_unknown_route_returns_json_404 PASSED    [  4%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_wrong_method_returns_json_405 PASSED     [  5%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_is_saved_with_a_calculated_calorie_target PASSED [  6%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_saving_the_same_name_again_updates_the_record PASSED [  7%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_without_weight_has_no_calorie_target PASSED [  8%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_name_is_trimmed PASSED            [  9%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload0-name] PASSED [ 10%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload1-name] PASSED [ 11%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload2-program] PASSED [ 12%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload3-program] PASSED [ 13%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload4-weight] PASSED [ 14%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload5-weight] PASSED [ 15%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload6-age] PASSED [ 16%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload7-height] PASSED [ 17%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_invalid_client_payloads_are_rejected[payload8-target_adherence] PASSED [ 18%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_can_be_loaded_by_name PASSED      [ 19%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_lookup_is_case_insensitive PASSED [ 20%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_missing_client_returns_404 PASSED        [ 21%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_clients_can_be_listed PASSED             [ 22%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_client_can_be_deleted PASSED             [ 23%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_deleting_a_missing_client_returns_404 PASSED [ 24%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_bmi_endpoint_returns_the_band_and_risk_note PASSED [ 25%]
+[2026-10-02T08:30:04.712Z] tests/test_clients_api.py::test_bmi_requires_height_and_weight PASSED    [ 26%]
+[2026-10-02T08:30:04.977Z] tests/test_clients_api.py::test_membership_defaults_to_active PASSED     [ 27%]
+[2026-10-02T08:30:04.978Z] tests/test_clients_api.py::test_membership_can_be_set_explicitly PASSED  [ 28%]
+[2026-10-02T08:30:04.978Z] tests/test_clients_api.py::test_summary_combines_profile_bmi_and_activity PASSED [ 29%]
+[2026-10-02T08:30:04.978Z] tests/test_clients_api.py::test_summary_for_a_missing_client_returns_404 PASSED [ 30%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_catalogue_matches_the_baseline_factors PASSED [ 31%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_list_programs_returns_every_programme_sorted PASSED [ 32%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_get_program_is_case_insensitive PASSED      [ 34%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_get_program_rejects_unknown_codes[None] PASSED [ 35%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_get_program_rejects_unknown_codes[] PASSED  [ 36%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_get_program_rejects_unknown_codes[UNKNOWN] PASSED [ 37%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_get_program_rejects_unknown_codes[   ] PASSED [ 38%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_multiplies_weight_by_the_factor PASSED [ 39%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_truncates_to_a_whole_number PASSED [ 40%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_returns_none_for_invalid_input[None-FL3] PASSED [ 41%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_returns_none_for_invalid_input[0-FL3] PASSED [ 42%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_returns_none_for_invalid_input[-5-FL3] PASSED [ 43%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_returns_none_for_invalid_input[80-NOPE] PASSED [ 44%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_calorie_target_returns_none_for_invalid_input[80-None] PASSED [ 45%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_is_calculated_from_height_in_centimetres PASSED [ 46%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_is_rounded_to_one_decimal PASSED        [ 47%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_returns_none_for_invalid_input[0-80] PASSED [ 48%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_returns_none_for_invalid_input[178-0] PASSED [ 49%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_returns_none_for_invalid_input[None-80] PASSED [ 50%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_returns_none_for_invalid_input[178-None] PASSED [ 51%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_returns_none_for_invalid_input[-178-80] PASSED [ 52%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[17.0-Underweight] PASSED [ 53%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[18.4-Underweight] PASSED [ 54%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[18.5-Normal] PASSED [ 55%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[24.9-Normal] PASSED [ 56%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[25.0-Overweight] PASSED [ 57%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[29.9-Overweight] PASSED [ 58%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[30.0-Obese] PASSED [ 59%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_bands_match_the_baseline_thresholds[41.2-Obese] PASSED [ 60%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_bmi_category_handles_a_missing_value PASSED [ 61%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_current_week_uses_the_baseline_format PASSED [ 62%]
+[2026-10-02T08:30:04.978Z] tests/test_programs.py::test_current_week_defaults_to_now PASSED         [ 63%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_progress_is_logged_against_the_client PASSED [ 64%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_progress_accepts_an_explicit_week PASSED [ 65%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_adherence_is_rejected[-1] PASSED [ 67%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_adherence_is_rejected[101] PASSED [ 68%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_adherence_is_rejected[high] PASSED [ 69%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_adherence_is_rejected[None] PASSED [ 70%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_adherence_is_rejected[True] PASSED [ 71%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_progress_for_a_missing_client_returns_404 PASSED [ 72%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_progress_history_is_returned_in_order PASSED [ 73%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_workout_is_logged_with_todays_date_by_default PASSED [ 74%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_workout_type_is_normalised PASSED       [ 75%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload0-workout_type] PASSED [ 76%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload1-workout_type] PASSED [ 77%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload2-duration_min] PASSED [ 78%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload3-duration_min] PASSED [ 79%]
+[2026-10-02T08:30:04.978Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload4-duration_min] PASSED [ 80%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_workout_payloads_are_rejected[payload5-duration_min] PASSED [ 81%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_workout_history_totals_the_minutes PASSED [ 82%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_workout_history_for_a_missing_client_returns_404 PASSED [ 83%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_exercise_is_attached_to_a_workout PASSED [ 84%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_exercise_volume_is_totalled PASSED      [ 85%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_exercise_payloads_are_rejected[payload0-name] PASSED [ 86%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_exercise_payloads_are_rejected[payload1-sets] PASSED [ 87%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_exercise_payloads_are_rejected[payload2-reps] PASSED [ 88%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_exercise_payloads_are_rejected[payload3-sets] PASSED [ 89%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_exercise_payloads_are_rejected[payload4-weight] PASSED [ 90%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_exercise_on_a_missing_workout_returns_404 PASSED [ 91%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_metrics_are_logged PASSED               [ 92%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_metric_weight_change_is_reported PASSED [ 93%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_single_metric_has_no_weight_change PASSED [ 94%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_metric_payloads_are_rejected[payload0-weight] PASSED [ 95%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_metric_payloads_are_rejected[payload1-weight] PASSED [ 96%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_metric_payloads_are_rejected[payload2-waist] PASSED [ 97%]
+[2026-10-02T08:30:05.244Z] tests/test_tracking_api.py::test_invalid_metric_payloads_are_rejected[payload3-bodyfat] PASSED [ 98%]
+[2026-10-02T08:30:05.511Z] tests/test_tracking_api.py::test_metrics_for_a_missing_client_returns_404 PASSED [100%]
+[2026-10-02T08:30:05.511Z] 
+[2026-10-02T08:30:05.511Z] - generated xml file: C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build\report.xml -
+[2026-10-02T08:30:05.511Z] 
+[2026-10-02T08:30:05.511Z] ---------- coverage: platform win32, python 3.14.8-final-0 -----------
+[2026-10-02T08:30:05.511Z] Coverage XML written to file coverage.xml
+[2026-10-02T08:30:05.511Z] 
+[2026-10-02T08:30:05.511Z] ============================= 97 passed in 1.01s ==============================
+Post stage
+[Pipeline] junit
+[2026-10-02T08:30:05.554Z] Recording test results
+[2026-10-02T08:30:05.620Z] [Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Image)
+[Pipeline] bat
+[2026-10-02T08:30:06.078Z] 
+[2026-10-02T08:30:06.078Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>where docker 
+[2026-10-02T08:30:06.078Z] INFO: Could not find files for the given pattern(s).
+Stage "Docker Image" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+[2026-10-02T08:30:06.227Z] Cleaning the workspace...
+[Pipeline] bat
+[2026-10-02T08:30:06.526Z] 
+[2026-10-02T08:30:06.526Z] C:\ProgramData\Jenkins\.jenkins\workspace\aceest-fitness-build>if exist venv rmdir /s /q venv 
+[Pipeline] echo
+[2026-10-02T08:30:07.493Z] BUILD SUCCESS - build #3
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
