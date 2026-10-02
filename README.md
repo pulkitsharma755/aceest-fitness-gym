@@ -332,3 +332,11 @@ Commit messages use conventional prefixes — `feat:`, `test:`, `ci:`, `docs:`,
 
 Prepared for **Introduction to DevOps (CSI ZG514 / SE ZG514)**, Assignment 1 —
 BITS Pilani Work Integrated Learning Programmes.
+
+## Jenkins BUILD evidence
+
+Jenkins runs locally and is not reachable from this repository, so the BUILD
+is evidenced by the screenshots in `desktop evidence`: the Stage View with all
+stages green, the console output ending in `Finished: SUCCESS`, the JUnit
+test result showing 97 tests passed, and the job configuration pulling from
+this repository on branch `main`.
