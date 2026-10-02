@@ -1,0 +1,114 @@
+name: CI/CD Pipeline
+
+# Triggered by every push and every pull request, as required by the
+# continuous integration practice "every commit triggers a build".
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch:
+
+jobs:
+  # -----------------------------------------------------------------
+  # Stage 1 - Build & Lint
+  # Fast feedback: install the application, check it imports cleanly and
+  # check the source for syntax errors and style violations.
+  # -----------------------------------------------------------------
+  build-and-lint:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Lint - fail the build on syntax errors or undefined names
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Lint - full style check
+        run: flake8 . --count --statistics
+
+      - name: Build check - the application imports and creates cleanly
+        run: python -c "from aceest import create_app; create_app(db_path=':memory:'); print('Application build OK')"
+
+      - name: Run unit tests on the runner
+        run: pytest -v --cov=aceest --cov-report=term-missing
+
+  # -----------------------------------------------------------------
+  # Stage 2 - Docker Image Assembly and Automated Testing
+  # Builds the image, runs the Pytest suite inside the container, then
+  # builds the slim runtime image and smoke-tests the running service.
+  # -----------------------------------------------------------------
+  docker-build-and-test:
+    name: Docker Build & Containerised Tests
+    runs-on: ubuntu-latest
+    needs: build-and-lint
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build the test image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: test
+          tags: aceest-fitness:test
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run the Pytest suite inside the container
+        run: docker run --rm aceest-fitness:test
+
+      - name: Build the production image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: runtime
+          tags: aceest-fitness:latest
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke test - start the container and exercise the API
+        run: |
+          docker run -d --name aceest -p 5000:5000 aceest-fitness:latest
+          echo "Waiting for the service to come up..."
+          for i in $(seq 1 15); do
+            if curl -fs http://localhost:5000/health > /dev/null; then
+              echo "Service is up after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+          curl -fs http://localhost:5000/health | tee /dev/stderr | grep -q healthy
+          curl -fs -X POST http://localhost:5000/clients \
+            -H "Content-Type: application/json" \
+            -d '{"name":"CI Runner","program":"MGPPL","height":178,"weight":80}' \
+            | tee /dev/stderr | grep -q '"calories": *2800'
+          curl -fs "http://localhost:5000/clients/CI%20Runner/bmi" \
+            | tee /dev/stderr | grep -q 'Overweight'
+          echo "Smoke test passed"
+
+      - name: Report image size
+        run: docker images aceest-fitness --format "{{.Repository}}:{{.Tag}} {{.Size}}"
+
+      - name: Stop and remove the container
+        if: always()
+        run: docker rm -f aceest || true
